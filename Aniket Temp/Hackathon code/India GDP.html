@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country GDP Graph</title>
+    <!-- Include Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li class="expandable">Macroeconomic
+                <ul class="submenu">
+                    <li><a href="#" id="gdpLink">GDP</a></li>
+                    <li><a href="#" id="fdiInflowsLink">FDI Inflows</a></li>
+                    <li><a href="#" id="fdiOutflowsLink">FDI Outflows</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div>
+            <button id="indiaButton">India</button>
+            <button id="chinaButton">China</button>
+            <button id="usaButton">USA</button>
+        </div>
+        <div>
+            Start Year: <span id="startYearValue">1960</span>
+            <input type="range" id="startYearSlider" min="1960" max="2023" value="1960">
+        </div>
+        <div>
+            End Year: <span id="endYearValue">2023</span>
+            <input type="range" id="endYearSlider" min="1960" max="2023" value="2023">
+        </div>
+        <div id="gdpChart" style="width: 800px; height: 400px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
