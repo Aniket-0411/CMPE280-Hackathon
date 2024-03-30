@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country GDP Graph</title>
+    <!-- Include Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="GDP.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div class="sidebar">
+        <details class="details">
+            <summary class="expandable">Macroeconomic</summary>
+            <p><a href="#" class="submenu" id="gdpLink">GDP</a></p>
+            <p><a href="#" class="submenu" id="fdiInflowsLink">FDI Inflows</a></p>
+            <p><a href="#" class="submenu" id="fdiOutflowsLink">FDI Outflows</a></p>
+        </details>
+        <details class="details">
+            <summary class="expandable">Agricultural</summary>
+            <p><a href="#" class="submenu" id="ac">Agricultural Contribution</a></p>
+            <p><a href="#" class="submenu" id="manu">Manufacturing</a></p>
+            <p><a href="#" class="submenu" id="avap">Agriculture, forestry, and fishing, value added (annual % growth)</a></p>
+            <p><a href="#" class="submenu" id="fcka">Fertilizer consumption (kilograms per hectare of arable land)</a></p>
+            <p><a href="#" class="submenu" id="fcp">Fertilizer consumption (% of fertilizer production)</a></p>
+        </details>
+        <details class="details">
+            <summary class="expandable">Debt</summary>
+            <p><a href="#" class="submenu" id="tr">Total reserves</a></p>
+            <p><a href="#" class="submenu" id="ds">Debt service (PPG and IMF only, % of exports of goods, services and primary income)</a></p>
+            <p><a href="#" class="submenu" id="tds">Total debt service (% of GNI)</a></p>
+            <p><a href="#" class="submenu" id="gni">GNI (current US$)</a></p>
+        </details>
+    </div>
+    <div class="body-content">
+        <object id="Frame" data=""></object>
+    </div>
+</body>
+</html>

@@ -69,18 +69,23 @@ async function plotGDPGraph(countryCode, startYear, endYear) {
 
 // Event listener for India button
 document.getElementById('indiaButton').addEventListener('click', function() {
-    console.log("India Clicked");
-    plotGDPGraph('IN', 1960, 2023);
+    const startYear = parseInt(document.getElementById('startYearValue').textContent);
+    const endYear = parseInt(document.getElementById('endYearSlider').value);
+    plotGDPGraph('IN', startYear, endYear);
 });
 
 // Event listener for China button
 document.getElementById('chinaButton').addEventListener('click', function() {
-    plotGDPGraph('CN', 1960, 2023);
+    const startYear = parseInt(document.getElementById('startYearValue').textContent);
+    const endYear = parseInt(document.getElementById('endYearSlider').value);
+    plotGDPGraph('CN', startYear, endYear);
 });
 
 // Event listener for USA button
 document.getElementById('usaButton').addEventListener('click', function() {
-    plotGDPGraph('US', 1960, 2023);
+    const startYear = parseInt(document.getElementById('startYearValue').textContent);
+    const endYear = parseInt(document.getElementById('endYearSlider').value);
+    plotGDPGraph('US', startYear, endYear);
 });
 
 // Function to update the graph when the slider value changes
@@ -89,7 +94,7 @@ document.getElementById('startYearSlider').addEventListener('input', function() 
     document.getElementById('startYearValue').textContent = startYear;
     const endYear = parseInt(document.getElementById('endYearSlider').value);
     document.getElementById('endYearSlider').setAttribute('min', startYear);
-    plotGDPGraph(startYear, endYear);
+    // plotGDPGraph(startYear, endYear);
 });
 
 document.getElementById('endYearSlider').addEventListener('input', function() {
@@ -97,5 +102,5 @@ document.getElementById('endYearSlider').addEventListener('input', function() {
     document.getElementById('endYearValue').textContent = endYear;
     const startYear = parseInt(document.getElementById('startYearSlider').value);
     document.getElementById('startYearSlider').setAttribute('max', endYear);
-    plotGDPGraph(startYear, endYear);
+    // plotGDPGraph(startYear, endYear);
 });
