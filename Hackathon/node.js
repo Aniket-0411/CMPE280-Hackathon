@@ -3,14 +3,18 @@ require("dotenv").config();
 const fs = require("fs");
 const cors = require("cors");
 const app = express();
+const path = require("path");
 const port = process.env.PORT || 3002;
 
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static("src"));
+app.use(express.static(path.join(__dirname, "src")));
+console.log("__dirname: ", __dirname);
 
-app.get("/", (req, res) => res.sendFile("/src/templates/Index.html"));
+app.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname, "/src/templates/Index.html"))
+);
 
 app.post("/api/call-gpt", async (req, res) => {
   //Process the prompt
