@@ -11,6 +11,8 @@ app.use(express.static(__dirname + "/src"));
 
 app.get("/", (req, res) => res.sendFile(__dirname + "/src/index.html"));
 
+//
+
 app.post("/", async (req, res) => {
   //Process the prompt
   let prompt = req.body.prompt;
