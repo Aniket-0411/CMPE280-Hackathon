@@ -22,23 +22,23 @@
     transition: 0.3s;
 }
 
-.sidebar ul li.expandable {
+.sidebar ul li.expandable1 {
     cursor: pointer;
 }
 
-.sidebar ul li.expandable:hover {
+.sidebar ul li.expandable1:hover {
     background-color: #555;
 }
 
-.sidebar ul li.expandable ul.submenu {
+.sidebar ul li.expandable1 ul.submenu1 {
     display: none;
 }
 
-.sidebar ul li.expandable.active ul.submenu {
+.sidebar ul li.expandable1.active ul.submenu1 {
     display: block;
 }
 
-.sidebar ul li ul.submenu li a {
+.sidebar ul li ul.submenu1 li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -46,7 +46,7 @@
     display: block;
 }
 
-.sidebar ul li ul.submenu li a:hover {
+.sidebar ul li ul.submenu1 li a:hover {
     background-color: #555;
 }
 

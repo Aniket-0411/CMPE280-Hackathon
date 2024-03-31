@@ -6,20 +6,21 @@ document.getElementById('gdpLink').addEventListener('click', function(event) {
 });
 
 // Event listener for macroeconomic menu item
-document.querySelector('.sidebar ul li.expandable').addEventListener('click', function() {
+document.querySelector('.sidebar ul li.expandable1').addEventListener('click', function() {
     this.classList.toggle('active'); // Toggle the active class
-    const submenu = this.querySelector('.submenu');
+    const submenu = this.querySelector('.submenu1');
     submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block'; // Toggle display of submenu
 });
 
 // Event listener for FDI Inflows link
 document.getElementById('fdiInflowsLink').addEventListener('click', function(event) {
     event.preventDefault();
-    // Add functionality to plot FDI Inflows graph
+    document.getElementById('Frame').src = 'FDI_Inflows.html';
 });
 
 // Event listener for FDI Outflows link
 document.getElementById('fdiOutflowsLink').addEventListener('click', function(event) {
     event.preventDefault();
+    document.getElementById('Frame').src = 'FDI_Outflows.html';
     // Add functionality to plot FDI Outflows graph
 });
