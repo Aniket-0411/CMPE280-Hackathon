@@ -8,11 +8,9 @@ const port = process.env.PORT || 3002;
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(__dirname + "/src"));
+app.use(express.static("src"));
 
-app.get("/", (req, res) =>
-  res.sendFile(__dirname + "/src/templates/Login.html")
-);
+app.get("/", (req, res) => res.sendFile("/src/templates/Index.html"));
 
 app.post("/api/call-gpt", async (req, res) => {
   //Process the prompt
