@@ -18,7 +18,7 @@ CHATGPT_API_KEY=$YOUR_OPENAI_API_KEY
 npm install
 ```
 ```
-npm run
+npm start
 ```
 ```
 open templates/Login.html
