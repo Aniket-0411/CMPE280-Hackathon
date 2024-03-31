@@ -72,6 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         document.getElementById("Frame").data = "GNI.html";
     });
+
+    document.getElementById('import').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById("Frame").data = "Import.html";
+    });
 });
 
 // Get all buttons
