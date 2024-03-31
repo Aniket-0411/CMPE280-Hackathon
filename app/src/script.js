@@ -48,7 +48,7 @@ function appendMessage(name, side, text) {
 }
 
 async function assistantResponse(prompt) {
-  let msgText = await fetch("server url", {
+  let msgText = await fetch("https://cmpe280-hackathon.onrender.com/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
