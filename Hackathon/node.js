@@ -3,7 +3,7 @@ require("dotenv").config();
 const fs = require("fs");
 const cors = require("cors");
 const app = express();
-const port = 3002;
+const port = process.env.PORT || 3002;
 
 app.use(cors());
 app.use(express.json());
@@ -152,5 +152,5 @@ app.post("/api/draw-pie", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at ${port}`);
 });
