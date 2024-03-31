@@ -48,7 +48,7 @@ function appendMessage(name, side, text) {
 }
 
 async function assistantResponse(prompt) {
-  let msgText = await fetch("{server URL}", {
+  let msgText = await fetch("server url", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
