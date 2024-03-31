@@ -1,7 +1,9 @@
 // Load the Google Charts library
 google.charts.load('current', {'packages':['corechart']});
 
-async function fetchCountryTRMData(countryCode='IN', startYear=1970, endYear=2023){
+let cc = ''
+
+async function fetchCountryTRMData(countryCode, startYear=1970, endYear=2023){
     // Construct the API URL with the country code and date range
     const url = `http://api.worldbank.org/v2/countries/${countryCode}/indicators/FI.RES.TOTL.MO?date=${startYear}:${endYear}&format=json`;
 
@@ -32,7 +34,7 @@ async function fetchCountryTRMData(countryCode='IN', startYear=1970, endYear=202
     }
 }
 
-async function fetchCountryTRMGData(countryCode='IN', startYear=1970, endYear=2023){
+async function fetchCountryTRMGData(countryCode, startYear=1970, endYear=2023){
     // Construct the API URL with the country code and date range
     const url = `http://api.worldbank.org/v2/countries/${countryCode}/indicators/FI.RES.TOTL.CD?date=${startYear}:${endYear}&format=json`;
 
@@ -63,7 +65,7 @@ async function fetchCountryTRMGData(countryCode='IN', startYear=1970, endYear=20
     }
 }
 
-async function fetchCountryTRMEDData(countryCode='IN', startYear=1970, endYear=2023){
+async function fetchCountryTRMEDData(countryCode, startYear=1970, endYear=2023){
     // Construct the API URL with the country code and date range
     const url = `http://api.worldbank.org/v2/countries/${countryCode}/indicators/FI.RES.TOTL.DT.ZS?date=${startYear}:${endYear}&format=json`;
 
@@ -94,7 +96,7 @@ async function fetchCountryTRMEDData(countryCode='IN', startYear=1970, endYear=2
     }
 }
 
-async function plotTRMGraph(countryCode='IN', startYear=1970, endYear=2023) {
+async function plotTRMGraph(countryCode, startYear=1970, endYear=2023) {
     const trmData = await fetchCountryTRMData(countryCode, startYear, endYear);
     const trmgData = await fetchCountryTRMGData(countryCode, startYear, endYear);
     const trmedData = await fetchCountryTRMEDData(countryCode, startYear, endYear);
@@ -138,40 +140,56 @@ async function plotTRMGraph(countryCode='IN', startYear=1970, endYear=2023) {
     trmedChart.draw(trmedDataTable, { ...options, title: 'Total reserves (% of total external debt)' });
 }
 
+document.getElementById('flagIcon').style.backgroundImage = `url(${cc}.png)` 
+
 // Event listener for India button
 document.getElementById('indiaButton').addEventListener('click', function() {
+    cc = "IN"
     const startYear = parseInt(document.getElementById('startYearValue').textContent);
     const endYear = parseInt(document.getElementById('endYearSlider').value);
-    plotTRMGraph('IN', startYear, endYear);
+    plotTRMGraph(cc, startYear, endYear);
+    document.getElementById('flagIcon').style.backgroundImage = `url(${cc}.png)`;
 });
 
 // Event listener for China button
 document.getElementById('chinaButton').addEventListener('click', function() {
+    cc = "CN";
     const startYear = parseInt(document.getElementById('startYearValue').textContent);
     const endYear = parseInt(document.getElementById('endYearSlider').value);
-    plotTRMGraph('CN', startYear, endYear);
+    plotTRMGraph(cc, startYear, endYear);
+    document.getElementById('flagIcon').style.backgroundImage = `url(${cc}.png)`;
 });
 
 // Event listener for USA button
 document.getElementById('usaButton').addEventListener('click', function() {
+    cc = "US";
     const startYear = parseInt(document.getElementById('startYearValue').textContent);
     const endYear = parseInt(document.getElementById('endYearSlider').value);
-    plotTRMGraph('US', startYear, endYear);
+    plotTRMGraph(cc, startYear, endYear);
+    document.getElementById('flagIcon').style.backgroundImage = `url(${cc}.png)`;
 });
+
+
+// Function to get the selected country code
+function getCC() {
+    return cc;
+}
 
 // Function to update the graph when the slider value changes
 document.getElementById('startYearSlider').addEventListener('input', function() {
     const startYear = parseInt(this.value);
     document.getElementById('startYearValue').textContent = startYear;
     const endYear = parseInt(document.getElementById('endYearSlider').value);
+    const countryCode = getCC(); // Add this line to get the selected country code
     document.getElementById('endYearSlider').setAttribute('min', startYear);
-    plotTRMGraph(startYear, endYear);
+    plotTRMGraph(countryCode, startYear, endYear); // Pass countryCode as the first parameter
 });
 
 document.getElementById('endYearSlider').addEventListener('input', function() {
     const endYear = parseInt(this.value);
     document.getElementById('endYearValue').textContent = endYear;
     const startYear = parseInt(document.getElementById('startYearSlider').value);
+    const countryCode = getCC(); // Add this line to get the selected country code
     document.getElementById('startYearSlider').setAttribute('max', endYear);
-    plotTRMGraph(startYear, endYear);
+    plotTRMGraph(countryCode, startYear, endYear); // Pass countryCode as the first parameter
 });

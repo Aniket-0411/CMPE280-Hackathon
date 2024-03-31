@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country GDP Graph</title>
+    <title>Agriculture, forestry, and fishing, value added (annual % growth)</title>
     <!-- Include Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" type="text/css" href="graphs.css">
 </head>
 <body>
     <header>
-        <h1 class='header-text'>GDP (In Dollars)</h1>
+        <h1 class="header-text">Agriculture, forestry, and fishing, value added (annual % growth)</h1>
         <div class="flag-icon" id="flagIcon"></div>
     </header>
     <!-- Add div for flag icon -->
@@ -20,17 +20,17 @@
             <button class='country cn' id="chinaButton">China</button>
             <button class='country us' id="usaButton">USA</button>
         </div>
-        <div class='sliders'>
+        <div class="sliders">
             Start Year: <span id="startYearValue">1970</span>
-            <input class='slider' type="range" id="startYearSlider" min="1970" max="2023" value="1970">
+            <input class="slider" type="range" id="startYearSlider" min="1970" max="2023" value="1970">
         </div>
-        <div class='sliders'>
+        <div class="sliders">
             End Year: <span id="endYearValue">2023 </span>
-            <input class='slider' type="range" id="endYearSlider" min="1970" max="2023" value="2023">
+            <input class="slider" type="range" id="endYearSlider" min="1970" max="2023" value="2023">
         </div>
-        <div class='charts' id="gdpChart" style="width: 800px; height: 400px;"></div>
+        <div class='charts' id="AFF-chart" style="width: 800px; height: 400px;"></div>
     </div>
-    <script src="GDP.js"></script>
+    <script src="AFF.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

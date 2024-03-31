@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country GDP Graph</title>
+    <title>Manufacturing Value Added(% GDP)</title>
     <!-- Include Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" type="text/css" href="graphs.css">
 </head>
 <body>
     <header>
-        <h1 class='header-text'>GDP (In Dollars)</h1>
+        <h1 class='header-text'>Manufacturing Value Added(% GDP)</h1>
         <div class="flag-icon" id="flagIcon"></div>
     </header>
     <!-- Add div for flag icon -->
@@ -28,9 +28,9 @@
             End Year: <span id="endYearValue">2023 </span>
             <input class='slider' type="range" id="endYearSlider" min="1970" max="2023" value="2023">
         </div>
-        <div class='charts' id="gdpChart" style="width: 800px; height: 400px;"></div>
+        <div class='charts' id="manu-chart" style="width: 800px; height: 400px;"></div>
     </div>
-    <script src="GDP.js"></script>
+    <script src="Manufacturing.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
