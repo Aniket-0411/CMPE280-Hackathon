@@ -1,10 +1,10 @@
 // Load the Google Charts library
 google.charts.load('current', {'packages':['corechart']});
 
-
-async function fetchCountryData(countryCode, startYear, endYear) {
+// Function to fetch FCP data for a specific country from the World Bank API for the specified year range
+async function fetchCountryFCPData(countryCode, startYear, endYear) {
     // Construct the API URL with the country code and date range
-    const url = `http://api.worldbank.org/v2/countries/${countryCode}/indicators/BX.KLT.DINV.WD.GD.ZS?date=${startYear}:${endYear}&format=json`;
+    const url = `http://api.worldbank.org/v2/countries/${countryCode}/indicators/AG.CON.FERT.PT.ZS?date=${startYear}:${endYear}&format=json`;
 
     try {
         const response = await fetch(url);
@@ -13,55 +13,55 @@ async function fetchCountryData(countryCode, startYear, endYear) {
         }
         const data = await response.json();
 
-        // Extract years and FDI_inflow values
-        const FDI_inflow_data = {};
+        // Extract years and FCP values
+        const FCPData = {};
 
-        // Initialize FDI_inflow data with null values for all years in the range
+        // Initialize FCP data with null values for all years in the range
         for (let year = startYear; year <= endYear; year++) {
-            FDI_inflow_data[year] = null;
+            FCPData[year] = null;
         }
 
-        // Fill in FDI_inflow data for available years
+        // Fill in FCP data for available years
         data[1].forEach(entry => {
             const year = parseInt(entry.date);
-            const FDI_inflow = parseFloat(entry.value);
-            FDI_inflow_data[year] = FDI_inflow;
+            const FCP = parseFloat(entry.value);
+            FCPData[year] = FCP;
         });
 
-        // Convert FDI_inflow data to array format
-        const FDI_inflowArray = Object.entries(FDI_inflow_data).map(([year, FDI_inflow]) => [year.toString(), FDI_inflow]);
+        // Convert FCP data to array format
+        const FCPArray = Object.entries(FCPData).map(([year, FCP]) => [year.toString(), FCP]);
         
-        return FDI_inflowArray;
+        return FCPArray;
     } catch (error) {
         console.error(error);
     }
 }
 
-// Function to plot FDI_inflow graph using Google Charts
-async function plotFDI_inflowGraph(countryCode, startYear, endYear) {
-    const FDI_inflow_data = await fetchCountryData(countryCode, startYear, endYear);
+// Function to plot FCP graph using Google Charts
+async function plotFCPGraph(countryCode, startYear, endYear) {
+    const FCPData = await fetchCountryFCPData(countryCode, startYear, endYear);
 
     // Create the data table
     const dataTable = new google.visualization.DataTable();
     dataTable.addColumn('string', 'Year');
-    dataTable.addColumn('number', ' % FDI_inflow');
-    dataTable.addRows(FDI_inflow_data);
+    dataTable.addColumn('number', '% of fertilizer production');
+    dataTable.addRows(FCPData);
 
     // Set chart options
     const options = {
-        title: 'Country FDI Inflow(% of GDP)',
+        title: 'Fertilizer consumption (% of fertilizer production)',
         curveType: 'function',
         legend: { position: 'top-right' },
         hAxis: {
             title: 'Year' 
         },
         vAxis: {
-            title: '% FDI Inflow',
+            title: '% of fertilizer production',
             format: 'short'
         }
     };
     // Instantiate and draw the chart
-    const chart = new google.visualization.LineChart(document.getElementById('fdi-inflow-chart'));
+    const chart = new google.visualization.LineChart(document.getElementById('fcp-chart'));
     chart.draw(dataTable, options);
 }
 
@@ -75,19 +75,19 @@ function updateFlagIcon(countryCode) {
 // Event listener for India button
 document.getElementById('indiaButton').addEventListener('click', function() {
     updateFlagIcon('IN');
-    plotFDI_inflowGraph('IN', 1970, 2023);
+    plotFCPGraph('IN', 1970, 2023);
 });
 
 // Event listener for China button
 document.getElementById('chinaButton').addEventListener('click', function() {
     updateFlagIcon('CN');
-    plotFDI_inflowGraph('CN', 1970, 2023);
+    plotFCPGraph('CN', 1970, 2023);
 });
 
 // Event listener for USA button
 document.getElementById('usaButton').addEventListener('click', function() {
     updateFlagIcon('US');
-    plotFDI_inflowGraph('US', 1970, 2023);
+    plotFCPGraph('US', 1970, 2023);
 });
 
 // Variable to store the currently selected country code
@@ -112,7 +112,8 @@ document.getElementById('startYearSlider').addEventListener('input', function() 
     const endYear = parseInt(document.getElementById('endYearSlider').value);
     const countryCode = getSelectedCountryCode();
     document.getElementById('endYearSlider').setAttribute('min', startYear);
-    plotFDI_inflowGraph(countryCode, startYear, endYear);
+    console.log(startYear);
+    plotFCPGraph(countryCode, startYear, endYear);
 });
 
 document.getElementById('endYearSlider').addEventListener('input', function() {
@@ -121,6 +122,6 @@ document.getElementById('endYearSlider').addEventListener('input', function() {
     const startYear = parseInt(document.getElementById('startYearSlider').value);
     const countryCode = getSelectedCountryCode();
     document.getElementById('startYearSlider').setAttribute('max', endYear);
-    plotFDI_inflowGraph(countryCode, startYear, endYear);
+    plotFCPGraph(countryCode, startYear, endYear);
 });
-
+    

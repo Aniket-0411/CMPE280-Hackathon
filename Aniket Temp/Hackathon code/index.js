@@ -18,15 +18,57 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('fdiInflowsLink').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'FDI_Inflows.html';
-        // Add functionality to plot FDI Inflows graph
     });
 
     // Event listener for FDI Outflows link
     document.getElementById('fdiOutflowsLink').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'FDI_Outflows.html';
-        // Add functionality to plot FDI Outflows graph
     });
 
+    // Event listener for Agriculture contribution link
+    document.getElementById('ac').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('Frame').data = 'AgriContribution.html';
+    });
 
+    // Event listener for Manufacturing Value Added link
+    document.getElementById('manu').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('Frame').data = 'Manufacturing.html';
+    });
+
+    // Event listener for AFF Annual Growth link
+    document.getElementById('avap').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('Frame').data = 'AFF.html';
+    });
+
+    // Event listener for FCKA link
+    document.getElementById('fcka').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('Frame').data = 'fcka.html';
+    });
+
+    // Event listener for FCP link
+    document.getElementById('fcp').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('Frame').data = 'fcp.html';
+    });
+    
 });
+
+// Get all buttons
+const buttons = document.querySelectorAll('button');
+
+// Add click event listener to each button
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        buttons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to the clicked button
+        this.classList.add('active');
+        // You can add logic here to handle chart data based on the clicked button
+    });
+});
+

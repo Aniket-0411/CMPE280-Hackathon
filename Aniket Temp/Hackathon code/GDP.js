@@ -12,15 +12,12 @@ async function fetchCountryGDPData(countryCode, startYear, endYear) {
             throw new Error('Failed to fetch data from the World Bank API');
         }
         const data = await response.json();
-
         // Extract years and GDP values
         const gdpData = {};
-
         // Initialize GDP data with null values for all years in the range
         for (let year = startYear; year <= endYear; year++) {
             gdpData[year] = null;
         }
-
         // Fill in GDP data for available years
         data[1].forEach(entry => {
             const year = parseInt(entry.date);
@@ -40,37 +37,33 @@ async function fetchCountryGDPData(countryCode, startYear, endYear) {
 // Function to plot GDP graph using Google Charts
 async function plotGDPGraph(countryCode, startYear, endYear) {
     const gdpData = await fetchCountryGDPData(countryCode, startYear, endYear);
-
     // Create the data table
     const dataTable = new google.visualization.DataTable();
     dataTable.addColumn('string', 'Year');
-    dataTable.addColumn('number', 'GDP');
+    dataTable.addColumn('number', 'GDP(IN USD)');
     dataTable.addRows(gdpData);
 
     // Set chart options
     const options = {
         title: 'Country GDP',
         curveType: 'function',
-        legend: { position: 'bottom' },
+        legend: { position: 'top-right' },
         hAxis: {
-            title: 'Year' // Set x-axis label to "Year"
+            title: 'Year'
         },
         vAxis: {
-            title: 'GDP (in USD)', // Set y-axis label to "GDP (in USD)"
-            format: 'short' // Formats y-axis labels to use "short" notation (e.g., 1K, 1M, 1B)
+            title: 'GDP (in USD)', 
+            format: 'short'
         }
     };
-
     // Instantiate and draw the chart
     const chart = new google.visualization.LineChart(document.getElementById('gdpChart'));
-    
     chart.draw(dataTable, options);
 }
 
 // Function to update the flag icon based on the selected country
 function updateFlagIcon(countryCode) {
     const flagIcon = document.getElementById('flagIcon');
-    // Assuming the file names for flags are named by their country codes, e.g., "IN.png" for India
     flagIcon.style.backgroundImage = `url(${countryCode}.png)`;
 
 }
@@ -99,9 +92,8 @@ let selectedCountryCode = '';
 // Function to update the flag icon based on the selected country
 function updateFlagIcon(countryCode) {
     const flagIcon = document.getElementById('flagIcon');
-    // Assuming the file names for flags are named by their country codes, e.g., "IN.png" for India
     flagIcon.style.backgroundImage = `url(${countryCode}.png)`;
-    selectedCountryCode = countryCode; // Update the selectedCountryCode variable
+    selectedCountryCode = countryCode;
 }
 
 // Function to get the selected country code
@@ -114,10 +106,10 @@ document.getElementById('startYearSlider').addEventListener('input', function() 
     const startYear = parseInt(this.value);
     document.getElementById('startYearValue').textContent = startYear;
     const endYear = parseInt(document.getElementById('endYearSlider').value);
-    const countryCode = getSelectedCountryCode(); // Add this line to get the selected country code
+    const countryCode = getSelectedCountryCode();
     document.getElementById('endYearSlider').setAttribute('min', startYear);
     console.log(startYear);
-    plotGDPGraph(countryCode, startYear, endYear); // Pass countryCode as the first parameter
+    plotGDPGraph(countryCode, startYear, endYear);
 });
 
 document.getElementById('endYearSlider').addEventListener('input', function() {
@@ -126,6 +118,6 @@ document.getElementById('endYearSlider').addEventListener('input', function() {
     const startYear = parseInt(document.getElementById('startYearSlider').value);
     const countryCode = getSelectedCountryCode(); // Add this line to get the selected country code
     document.getElementById('startYearSlider').setAttribute('max', endYear);
-    plotGDPGraph(countryCode, startYear, endYear); // Pass countryCode as the first parameter
+    plotGDPGraph(countryCode, startYear, endYear);
 });
 
