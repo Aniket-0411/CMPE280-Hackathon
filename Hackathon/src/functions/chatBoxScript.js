@@ -48,13 +48,16 @@ function appendMessage(name, side, text) {
 }
 
 async function assistantResponse(prompt) {
-  let msgText = await fetch("http://localhost:3002/api/call-gpt", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ prompt: prompt }),
-  })
+  let msgText = await fetch(
+    "https://cmpe280-hackathon.onrender.com/api/call-gpt",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: prompt }),
+    }
+  )
     .then((response) => response.json())
     .then((json) => {
       return json.data.response;
