@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMPE280 Hackathon</title>
+    <link rel="stylesheet" href="../styles/chatBoxStyle.css" />
+    <script src="../functions/chatBoxScript.js" defer></script>
+  </head>
+  <body>
+    <div class="mainWrapper">
+      <section class="msger">
+        <header class="msger-header">
+          <div class="msger-header-title">Food Security 2023</div>
+          <div class="msger-header-options">
+            <span><i class="fas fa-cog"></i></span>
+          </div>
+          <button class="minimize-chat">🗕</button>
+        </header>
+
+        <main class="msger-chat">
+          <div class="msg left-msg">
+            <div class="msg-bubble">
+              <div class="msg-info">
+                <div class="msg-info-name">Assistant</div>
+              </div>
+
+              <div class="msg-text">Hi, ask me anything!</div>
+            </div>
+          </div>
+        </main>
+
+        <form class="msger-inputarea">
+          <input
+            type="text"
+            class="msger-input"
+            placeholder="Enter your message..."
+          />
+          <button type="submit" class="msger-send-btn">Send</button>
+        </form>
+      </section>
+      <button class="maximize-chat">Chat with Assistant</button>
+    </div>
+  </body>
+</html>
