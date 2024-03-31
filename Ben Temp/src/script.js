@@ -3,7 +3,7 @@
 async function inquirePrompt(prompt) {
   if (prompt) {
     //REST call
-    await fetch("https://chatgpt-chat-us-tax-law.onrender.com/", {
+    await fetch("{API server url}", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
