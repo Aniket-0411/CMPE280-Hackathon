@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country GDP Graph</title>
+    <title>FDI Inflow Graph</title>
     <!-- Include Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Add CSS for flag icon and sliders -->
@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-    <h3>GDP</h3>
+    <h3>FDI Inflow</h3>
     <!-- Add div for flag icon -->
     <div class="flag-icon" id="flagIcon"></div>
     <div class="content">
@@ -41,8 +41,8 @@
             End Year: <span id="endYearValue">2023 </span>
             <input type="range" id="endYearSlider" min="1970" max="2023" value="2023">
         </div>
-        <div id="gdpChart" style="width: 800px; height: 400px;"></div>
+        <div id="fdi-inflow-chart" style="width: 800px; height: 400px;"></div>
     </div>
-    <script src="GDP.js"></script>
+    <script src="FDI_Inflows.js"></script>
 </body>
 </html>

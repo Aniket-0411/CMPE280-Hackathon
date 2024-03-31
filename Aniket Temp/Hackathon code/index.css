@@ -1,20 +1,24 @@
-.sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
+body{
+    margin: 0;
 }
 
-.sidebar ul {
+.outer-div {
+    display: flex;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 20%;
+    background-color: #111;
+    padding: 0;
+}
+
+.sidebar{
     list-style-type: none;
     padding: 0;
 }
 
-.sidebar ul li {
+.sidebar{
     color: white;
     padding: 8px 8px;
     text-decoration: none;
@@ -22,31 +26,36 @@
     transition: 0.3s;
 }
 
-.sidebar ul li.expandable {
+.expandable {
     cursor: pointer;
+    color: white;
+    padding-left: 20px;
+    font-size: 20px;
 }
 
-.sidebar ul li.expandable:hover {
+.expandable:hover {
     background-color: #555;
 }
 
-.sidebar ul li.expandable ul.submenu {
+.submenu {
     display: none;
 }
 
-.sidebar ul li.expandable.active ul.submenu {
+.submenu {
     display: block;
-}
-
-.sidebar ul li ul.submenu li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
     padding: 6px 8px;
+    padding-left: 40px;
     display: block;
 }
 
-.sidebar ul li ul.submenu li a:hover {
+.submenu:hover {
+    background-color: #555;
+}
+
+.submenu:active {
     background-color: #555;
 }
 
@@ -64,11 +73,16 @@
 }
 
 .body-content {
-    padding-left: 250px; /* Adjust according to your sidebar width */
+    width: 80%;
+    height: 100vh;
 }
 
 #Frame {
-    width: calc(100% - 250px); /* Adjust according to your sidebar width */
-    height: 100vh; /* 100% of the viewport height */
+    width: 100%; 
+    height: 100%;
 }
 
+.details {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

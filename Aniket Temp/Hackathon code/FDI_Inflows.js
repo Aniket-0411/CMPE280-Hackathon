@@ -4,7 +4,7 @@ google.charts.load('current', {'packages':['corechart']});
 // Function to fetch GDP data for a specific country from the World Bank API for the specified year range
 async function fetchCountryGDPData(countryCode, startYear, endYear) {
     // Construct the API URL with the country code and date range
-    const url = `http://api.worldbank.org/v2/countries/${countryCode}/indicators/NY.GDP.MKTP.CD?date=${startYear}:${endYear}&format=json`;
+    const url = `http://api.worldbank.org/v2/countries/${countryCode}/indicators/BX.KLT.DINV.WD.GD.ZS?date=${startYear}:${endYear}&format=json`;
 
     try {
         const response = await fetch(url);
@@ -49,20 +49,20 @@ async function plotGDPGraph(countryCode, startYear, endYear) {
 
     // Set chart options
     const options = {
-        title: 'Country GDP',
+        title: 'Country FDI Inflow(% of GDP)',
         curveType: 'function',
         legend: { position: 'bottom' },
         hAxis: {
             title: 'Year' // Set x-axis label to "Year"
         },
         vAxis: {
-            title: 'GDP (in USD)', // Set y-axis label to "GDP (in USD)"
+            title: 'FDI Inflow', // Set y-axis label to "GDP (in USD)"
             format: 'short' // Formats y-axis labels to use "short" notation (e.g., 1K, 1M, 1B)
         }
     };
 
     // Instantiate and draw the chart
-    const chart = new google.visualization.LineChart(document.getElementById('gdpChart'));
+    const chart = new google.visualization.LineChart(document.getElementById('fdi-inflow-chart'));
     
     chart.draw(dataTable, options);
 }
@@ -116,7 +116,6 @@ document.getElementById('startYearSlider').addEventListener('input', function() 
     const endYear = parseInt(document.getElementById('endYearSlider').value);
     const countryCode = getSelectedCountryCode(); // Add this line to get the selected country code
     document.getElementById('endYearSlider').setAttribute('min', startYear);
-    console.log(startYear);
     plotGDPGraph(countryCode, startYear, endYear); // Pass countryCode as the first parameter
 });
 

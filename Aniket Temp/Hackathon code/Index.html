@@ -6,24 +6,36 @@
     <title>Country GDP Graph</title>
     <!-- Include Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="index.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-    <div class="sidebar">
-        <ul>
-            <li class="expandable">Macroeconomic
-                <ul class="submenu">
-                    <li><a href="#" id="gdpLink">GDP</a></li>
-                    <li><a href="#" id="fdiInflowsLink">FDI Inflows</a></li>
-                    <li><a href="#" id="fdiOutflowsLink">FDI Outflows</a></li>
-                </ul>
-            </li>
-        </ul>
+    <div class="outer-div">
+        <div class="sidebar">
+            <details class="details">
+                <summary class="expandable">Macroeconomic</summary>
+                <p><a href="#" class="submenu" id="gdpLink">GDP</a></p>
+                <p><a href="#" class="submenu" id="fdiInflowsLink">FDI Inflows</a></p>
+                <p><a href="#" class="submenu" id="fdiOutflowsLink">FDI Outflows</a></p>
+            </details>
+            <details class="details">
+                <summary class="expandable">Agricultural</summary>
+                <p><a href="#" class="submenu" id="ac">Agricultural Contribution</a></p>
+                <p><a href="#" class="submenu" id="manu">Manufacturing</a></p>
+                <p><a href="#" class="submenu" id="avap">Agriculture, forestry, and fishing, value added (annual % growth)</a></p>
+                <p><a href="#" class="submenu" id="fcka">Fertilizer consumption (kilograms per hectare of arable land)</a></p>
+                <p><a href="#" class="submenu" id="fcp">Fertilizer consumption (% of fertilizer production)</a></p>
+            </details>
+            <details class="details">
+                <summary class="expandable">Debt</summary>
+                <p><a href="#" class="submenu" id="tr">Reserves</a></p>
+                <p><a href="#" class="submenu" id="ds">Total Debt</a></p>
+                <p><a href="#" class="submenu" id="gni">GNI (current US$)</a></p>
+            </details>
+        </div>
+        <div class="body-content">
+            <object id="Frame" data="FDI_Outflows.html"></object>
+        </div>
     </div>
-    <div class="body-content">
-        <iframe id="Frame" src="GDP.html"></iframe>
-    </div>
-    <script src="index.js"></script>
-    <script src="GDP.js"></script>
 </body>
 </html>
