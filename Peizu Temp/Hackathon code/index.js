@@ -36,30 +36,35 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('ac').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'AgriContribution.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for Manufacturing Value Added link
     document.getElementById('manu').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'Manufacturing.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for AFF Annual Growth link
     document.getElementById('avap').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'AFF.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for FCKA link
     document.getElementById('fcka').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'fcka.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for FCP link
     document.getElementById('fcp').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'fcp.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for Total Reserves link
@@ -67,21 +72,25 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const frame = document.getElementById('Frame');
         frame.data = 'TRMI.html';
+        hideAnnotationsByDefault();
     });
 
     document.getElementById('ds').addEventListener('click', (e) => {
         e.preventDefault();
         document.getElementById("Frame").data = "Debts.html";
+        hideAnnotationsByDefault();
     });
 
     document.getElementById('gni').addEventListener('click', (e) => {
         e.preventDefault();
         document.getElementById("Frame").data = "GNI.html";
+        hideAnnotationsByDefault();
     });
 
     document.getElementById('import').addEventListener('click', (e) => {
         e.preventDefault();
         document.getElementById("Frame").data = "Import.html";
+        hideAnnotationsByDefault();
     });
 
     //Save annotations to local storage
