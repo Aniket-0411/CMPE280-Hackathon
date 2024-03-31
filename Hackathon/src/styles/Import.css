@@ -1,0 +1,75 @@
+header {
+    text-align: center;
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+    background-color: lightblue;
+    width: 100px;
+    padding: 10px;
+    font-size: large;
+    text-align: center;
+    justify-content: center;
+}
+
+.year-container{
+    width: 100px;
+    background-color: lightblue;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0;
+    
+}
+
+.year {
+    text-align: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+}
+
+.year-container:hover {
+    background-color: rgba(173, 216, 230, 0.8);
+}
+
+.selections {
+    display: flex;
+    gap: 50%;
+    text-align: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: fixed;
+}
+
+.btn {
+    cursor: pointer;
+    width: 100px;
+    background-color: gold;
+    border: none;
+    font-size: large;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 40px;
+}
+
+.btn:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+.sankey {
+    margin-top: 20px;
+}
+
+.flag-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+}

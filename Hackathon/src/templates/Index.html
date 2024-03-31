@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country GDP Graph</title>
+    <!-- Include Google Charts -->
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript" src="../functions/index.js"></script>
+    <script type="text/javascript" src="../functions/GDP.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/index.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header">
+        <h1>
+          Macroeconomic Researcher Food Security Time Series and Large Language
+          Chat GPT Dashboard
+        </h1>
+      </div>
+      <div class="outer-div">
+        <div class="sidebar">
+          <details class="details">
+            <summary class="expandable">Macroeconomic</summary>
+            <p><a href="#" class="submenu" id="gdpLink">GDP</a></p>
+            <p>
+              <a href="#" class="submenu" id="fdiInflowsLink">FDI Inflows</a>
+            </p>
+            <p>
+              <a href="#" class="submenu" id="fdiOutflowsLink">FDI Outflows</a>
+            </p>
+          </details>
+          <details class="details">
+            <summary class="expandable">Agricultural</summary>
+            <p>
+              <a href="#" class="submenu" id="ac">Agricultural Contribution</a>
+            </p>
+            <p><a href="#" class="submenu" id="manu">Manufacturing</a></p>
+            <p>
+              <a href="#" class="submenu" id="avap"
+                >Agriculture, forestry, and fishing, value added (annual %
+                growth)</a
+              >
+            </p>
+            <p>
+              <a href="#" class="submenu" id="fcka"
+                >Fertilizer consumption (kilograms per hectare of arable
+                land)</a
+              >
+            </p>
+            <p>
+              <a href="#" class="submenu" id="fcp"
+                >Fertilizer consumption (% of fertilizer production)</a
+              >
+            </p>
+          </details>
+          <details class="details">
+            <summary class="expandable">Debt</summary>
+            <p><a href="#" class="submenu" id="tr">Reserves</a></p>
+            <p><a href="#" class="submenu" id="ds">Total Debt</a></p>
+            <p><a href="#" class="submenu" id="gni">GNI (current US$)</a></p>
+          </details>
+          <p class="expandable" id="import">
+            <a href="#" class="import">Import</a>
+          </p>
+        </div>
+        <div class="body-content">
+          <object id="Frame" data=""></object>
+          <div class="annotations">
+            <label for="annotations">Annotations:</label>
+            <textarea
+              id="annotations"
+              placeholder="Enter your annotations here..."
+            ></textarea>
+          </div>
+          <div class="assistant-container">
+            <object data="assistance.html"></object>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
