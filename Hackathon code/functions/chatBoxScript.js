@@ -8,12 +8,16 @@ const chatMaximize = get(".maximize-chat");
 chatMinimize.addEventListener("click", () => {
   msger.style.display = "none";
   chatMaximize.style.display = "inline-block";
+  window.parent.postMessage("close", "*");        //Chat bot size handle
+  
 });
 
 chatMaximize.addEventListener("click", () => {
   msger.style.display = "flex";
   chatMaximize.style.display = "none";
+  window.parent.postMessage("open", "*");         //Chat bot size handle
 });
+
 
 msgerForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -67,3 +71,4 @@ async function assistantResponse(prompt) {
 function get(selector, root = document) {
   return root.querySelector(selector);
 }
+

@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener("message", function(event) {
+        
         if (event.data === "InvokeIndexJsAnnotationsLoad") {
             checkAnnotationsVisibility();
             setTimeout(function() {
@@ -144,4 +145,29 @@ document.addEventListener('DOMContentLoaded', function() {
             
         }
     });
+
+    function ChatboxSize(){
+        var objectData = document.getElementById('chatbot');
+        objectData.style.width = '500px';
+        objectData.style.height = '700px';
+    }
+
+    window.addEventListener("message", function(event) {
+        if (event.data === "open") {
+            setTimeout(function() {
+                var objectData = document.getElementById('chatbot');
+                objectData.style.width = '1000px';
+                objectData.style.height = '1200px';            //Execute after 10ms because index Event listener takes time to setup
+            }, 5);                         
+            
+        }
+        else if(event.data === "close"){
+            setTimeout(function() {
+                var objectData = document.getElementById('chatbot');
+                objectData.style.width = 'auto';
+                objectData.style.height = 'auto';           //Execute after 10ms because index Event listener takes time to setup
+            }, 5); 
+        }
+    });
+    
 });

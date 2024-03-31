@@ -4,6 +4,7 @@ body{
 
 .outer-div {
     display: flex;
+
 }
 
 .sidebar {
@@ -120,4 +121,15 @@ body{
 
 .assistance{
     position: fixed;
+}
+
+.assistant-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.assistant-container object {
+    width: auto;
+    height: auto;
 }
