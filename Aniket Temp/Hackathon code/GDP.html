@@ -6,25 +6,10 @@
     <title>Country GDP Graph</title>
     <!-- Include Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!-- Add CSS for flag icon and sliders -->
-    <style>
-        .flag-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 50px; /* Adjust as needed */
-            height: 50px; /* Adjust as needed */
-            background-size: cover;
-        }
-        
-        /* Style for sliders */
-        input[type="range"] {
-            width: 500px; /* Adjust to match the width of the chart */
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="object.css">
 </head>
 <body>
-    <h3>GDP</h3>
+    <h3>GDP (In Dollars)</h3>
     <!-- Add div for flag icon -->
     <div class="flag-icon" id="flagIcon"></div>
     <div class="content">
@@ -44,5 +29,6 @@
         <div id="gdpChart" style="width: 800px; height: 400px;"></div>
     </div>
     <script src="GDP.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
