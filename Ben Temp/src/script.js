@@ -18,13 +18,13 @@ chatMaximize.addEventListener("click", () => {
 msgerForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const msgText = msgerInput.value;
-  if (!msgText) return;
+  const prompt = msgerInput.value;
+  if (!prompt) return;
 
-  appendMessage("You", "right", msgText);
+  appendMessage("You", "right", prompt); //Display user's prompt
   msgerInput.value = "";
 
-  assistantResponse();
+  assistantResponse(prompt);
 });
 
 function appendMessage(name, side, text) {
@@ -47,10 +47,18 @@ function appendMessage(name, side, text) {
   msgerChat.scrollTop += 250;
 }
 
-function assistantResponse() {
-  //API Call
-  const msgText =
-    "gagwegawegagagweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegawegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegawegweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweggagwegawegaweg";
+async function assistantResponse(prompt) {
+  let msgText = await fetch("{server URL}", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ prompt: prompt }),
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      return json.data.response;
+    });
 
   appendMessage("Assistant", "left", msgText);
 }
