@@ -14,7 +14,8 @@ async function inquirePrompt(prompt) {
     })
       .then((response) => response.json())
       .then((json) => {
-        AI_Response(json.data.response);
+        json.data.response;
+        //Present ChatGPT's response
       });
   }
 }
