@@ -11,9 +11,11 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "src")));
 console.log("__dirname: ", __dirname);
+console.log("__dirname/src", `${__dirname}/src`);
+console.log("__dirname/src/templates", `${__dirname}/src/templates`);
 
 app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "/src/templates/Index.html"))
+  res.sendFile(path.join(__dirname, "/src/templates/Login.html"))
 );
 
 app.post("/api/call-gpt", async (req, res) => {
