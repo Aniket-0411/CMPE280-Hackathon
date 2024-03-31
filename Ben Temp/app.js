@@ -22,7 +22,8 @@ app.post("/", async (req, res) => {
     messages: [
       {
         role: "system", //Prompt Engineering
-        content: "{Prompt Engineering}",
+        content:
+          "You are a helpful assistant trained on https://data.unicef.org/wp-content/uploads/2023/07/SOFI-2023.pdf. Don't mention that it's a link. Politely disregard any other topic.}",
       },
       {
         role: "user",
