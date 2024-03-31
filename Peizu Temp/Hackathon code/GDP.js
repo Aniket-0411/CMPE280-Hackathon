@@ -71,18 +71,24 @@ function updateFlagIcon(countryCode) {
 document.getElementById('indiaButton').addEventListener('click', function() {
     updateFlagIcon('IN');
     plotGDPGraph('IN', 1970, 2023);
+    localStorage.setItem('Country','IN');                       //For annotations
+    window.parent.postMessage("InvokeIndexJsAnnotationsLoad", "*");  //For annotations
 });
 
 // Event listener for China button
 document.getElementById('chinaButton').addEventListener('click', function() {
     updateFlagIcon('CN');
     plotGDPGraph('CN', 1970, 2023);
+    localStorage.setItem('Country','CN');                       //For annotations
+    window.parent.postMessage("InvokeIndexJsAnnotationsLoad", "*");  //For annotations
 });
 
 // Event listener for USA button
 document.getElementById('usaButton').addEventListener('click', function() {
     updateFlagIcon('US');
     plotGDPGraph('US', 1970, 2023);
+    localStorage.setItem('Country','US');                       //For annotations
+    window.parent.postMessage("InvokeIndexJsAnnotationsLoad", "*");  //For annotations
 });
 
 // Variable to store the currently selected country code

@@ -86,7 +86,7 @@ body{
 
 #Frame {
     width: 100%; 
-    height: 100%;
+    height: 80%;
 }
 
 .details {
@@ -101,4 +101,19 @@ body{
 
 .import:hover {
     background-color: #555; 
+}
+
+.annotations {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.annotations textarea {
+    width: 100%; 
+    height: 4em; 
+    resize: vertical; 
+    margin-top: 10px;
 }

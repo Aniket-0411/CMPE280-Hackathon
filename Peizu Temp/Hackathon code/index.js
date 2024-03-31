@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    hideAnnotationsByDefault();
+
     // Event listener for GDP link
     document.getElementById('gdpLink').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'GDP.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for macroeconomic menu item
@@ -18,12 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('fdiInflowsLink').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'FDI_Inflows.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for FDI Outflows link
     document.getElementById('fdiOutflowsLink').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('Frame').data = 'FDI_Outflows.html';
+        hideAnnotationsByDefault();
     });
 
     // Event listener for Agriculture contribution link
@@ -77,18 +83,56 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         document.getElementById("Frame").data = "Import.html";
     });
-});
 
-// Get all buttons
-const buttons = document.querySelectorAll('button');
+    //Save annotations to local storage
+    document.getElementById('annotations').addEventListener('change', (e) => {
+        console.log("Value changed");
+        var objectData = document.getElementById('Frame').getAttribute('data');
+        var country = localStorage.getItem('Country');
+        objectData += country;                                  //Unique Variable name according to Country and graph
+        var annotationsText = document.getElementById('annotations').value;
+        localStorage.setItem(objectData,annotationsText);
+        console.log(objectData,annotationsText);
+    });
 
-// Add click event listener to each button
-buttons.forEach(button => {
-    button.addEventListener('click', function() {
-        // Remove active class from all buttons
-        buttons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to the clicked button
-        this.classList.add('active');
-        // You can add logic here to handle chart data based on the clicked button
+    function hideAnnotationsByDefault(){
+        var annotations = document.querySelector('.annotations');
+        annotations.style.display = 'none';
+    }
+    function checkAnnotationsVisibility(){
+        var objectData = document.getElementById('Frame').getAttribute('data');
+        var userType = localStorage.getItem('userType');
+        var annotations = document.querySelector('.annotations');
+        if(userType == 'ECON Researcher'){
+            if (objectData.trim() == 'GDP.html' || objectData.trim() == 'FDI_Outflows.html' || objectData.trim() == 'FDI_Inflows.html') {
+                annotations.style.display = 'block';
+            } else {
+                annotations.style.display = 'none';
+            }
+        } else{
+            annotations.style.display = 'none';
+        }
+    }
+
+    function LoadAnnotationsText(){
+        var objectData = document.getElementById('Frame').getAttribute('data');
+        var country = localStorage.getItem('Country');
+        objectData += country;
+        var LoadText = localStorage.getItem(objectData);
+        console.log(objectData,country);
+        if(objectData != null){
+            var annotationsText = document.getElementById('annotations');
+            annotationsText.value = LoadText;
+        }
+    }
+    
+    window.addEventListener("message", function(event) {
+        if (event.data === "InvokeIndexJsAnnotationsLoad") {
+            checkAnnotationsVisibility();
+            setTimeout(function() {
+                LoadAnnotationsText();              //Execute after 10ms because index Event listener takes time to setup
+            }, 10);                         
+            
+        }
     });
 });
