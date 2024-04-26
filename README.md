@@ -2,6 +2,8 @@
 # CMPE280 Hackathon
 **Hackathon - State of Food Security and Nutrition in the World 2023**
 
+**Note: TODO :  Convert the code into React app**
+
 ## Setup Instructions
 
 Follow these steps to set up the project environment and start the application:
